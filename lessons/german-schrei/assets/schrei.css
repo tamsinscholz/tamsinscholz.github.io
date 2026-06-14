@@ -238,7 +238,16 @@ strong { font-weight: 800; }
   max-height: 0; overflow: hidden; opacity: 0;
   transition: max-height .35s ease, opacity .25s ease, padding .35s ease;
 }
-.vocab__row.is-open .vocab__def { max-height: 200px; opacity: 1; }
+.vocab__row.is-open .vocab__def { max-height: 280px; opacity: 1; }
+
+.vocab__en {
+  display: block;
+  margin-top: 4px;
+  font-size: .85rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+.vocab__en em { color: var(--accent); font-weight: normal; }
 
 .idiom {
   margin-top: 20px;
