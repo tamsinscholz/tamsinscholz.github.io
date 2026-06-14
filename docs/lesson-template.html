@@ -1,0 +1,146 @@
+<!--
+  Copy this file to lessons/<slug>/index.html and fill in the TODOs.
+  Also create lessons/<slug>/assets/<slug>.css and lessons/<slug>/assets/<slug>.js
+  Then add a manifest entry to /lessons.json.
+
+  Section conventions (see docs/README.md):
+  - <h2> titles describe content, not function ("Intro" not "Hook")
+  - Vocab is always tap-to-reveal
+  - Discussion section is exactly: "Discuss with Oma and Opa"
+  - Address the student directly ("you")
+  - Each lesson page is self-contained — don't import the landing's base.css
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson N · TODO short title</title>
+  <link rel="stylesheet" href="assets/SLUG.css">
+</head>
+<body>
+  <a class="back" href="../../">← all lessons</a>
+
+  <main class="page">
+
+    <!-- ============ Hero ============ -->
+    <header class="hero">
+      <p class="hero__kicker">Lesson N · TODO Topic · TODO subcategory</p>
+      <h1 class="hero__title">TODO real lesson title</h1>
+      <p class="hero__sub">TODO one-sentence framing that says why this matters.</p>
+    </header>
+
+    <!-- ============ Intro ============ -->
+    <!-- Sets up the topic in plain language. Often ends with a tiny warm-up prompt. -->
+    <section class="block block--intro">
+      <h2>Intro</h2>
+      <p>TODO one or two short paragraphs that introduce the idea.</p>
+      <p class="aside">TODO optional warm-up prompt — "Before you watch, write down…"</p>
+    </section>
+
+    <!-- ============ Watch / Listen / Read ============ -->
+    <!-- Pick one heading style based on the medium. Always include a one-sentence "listen for" prompt. -->
+    <section class="block block--watch">
+      <h2>Watch · about N minutes</h2>
+      <p class="block__lede">TODO listen-for prompt. State the stop time in copy because YouTube may not honor it.</p>
+      <div class="video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/VIDEO_ID?start=0&end=395&rel=0&modestbranding=1"
+          title="TODO video title"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- ============ Vocabulary ============ -->
+    <!-- Always tap-to-reveal. Let her guess each meaning first. -->
+    <section class="block block--vocab">
+      <h2>Words worth knowing</h2>
+      <p class="block__lede">Try to guess each meaning first, then tap to reveal.</p>
+      <ul class="vocab">
+        <li class="vocab__row">
+          <button class="vocab__term" type="button" aria-expanded="false">TODO term</button>
+          <p class="vocab__def">TODO short definition</p>
+        </li>
+        <li class="vocab__row">
+          <button class="vocab__term" type="button" aria-expanded="false">TODO term</button>
+          <p class="vocab__def">TODO short definition</p>
+        </li>
+        <!-- Aim for 5–10 entries. -->
+      </ul>
+    </section>
+
+    <!-- ============ Solo task ============ -->
+    <!-- One thing she does herself. Add interactivity (form, checklist, timer, drag, etc.)
+         and persist to localStorage with key: summerSchool2026.lesson.<slug>.<thing> -->
+    <section class="block block--task">
+      <h2>Solo task · TODO short name</h2>
+      <p>TODO the prompt — be specific about what she should produce.</p>
+      <!-- TODO: interactive element here (input, checklist, sketch area, etc.) -->
+    </section>
+
+    <!-- ============ Discussion ============ -->
+    <!-- Use this exact heading. 3–5 open-ended questions, no right answers. -->
+    <section class="block block--discuss">
+      <h2>Discuss with Oma and Opa</h2>
+      <ol class="discuss">
+        <li>TODO question 1</li>
+        <li>TODO question 2</li>
+        <li>TODO question 3</li>
+      </ol>
+    </section>
+
+    <!-- ============ Stretch ============ -->
+    <!-- Optional bonus question for if she's hooked. -->
+    <section class="block block--stretch">
+      <h2>Stretch</h2>
+      <p>TODO bonus prompt.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <a class="back" href="../../">← all lessons</a>
+  </footer>
+
+  <script src="assets/SLUG.js" defer></script>
+</body>
+</html>
+
+<!--
+  Minimal lesson <slug>.js to make the vocab section tap-to-reveal:
+
+  (function () {
+    for (const term of document.querySelectorAll(".vocab__term")) {
+      term.addEventListener("click", () => {
+        const row = term.closest(".vocab__row");
+        const open = row.classList.toggle("is-open");
+        term.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+  })();
+
+  Minimal vocab CSS (drop into <slug>.css, adjust colors to your theme):
+
+  .vocab { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .vocab__row { border-bottom: 1px solid var(--rule); }
+  .vocab__term {
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    width: 100%; padding: 14px 4px; border: 0; background: transparent;
+    font: inherit; font-size: 1.02rem; font-weight: 600; color: var(--accent-deep);
+    text-align: left; cursor: pointer;
+  }
+  .vocab__term::after {
+    content: "+"; display: inline-grid; place-items: center; width: 22px; height: 22px;
+    border: 1px solid var(--rule); border-radius: 50%; color: var(--ink-faint);
+    font-weight: 500; font-size: 1rem; line-height: 1; flex: none;
+  }
+  .vocab__term[aria-expanded="true"]::after { content: "−"; color: var(--accent); border-color: var(--accent); }
+  .vocab__def {
+    margin: 0; padding: 0 4px 14px; color: var(--ink-soft);
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height .35s ease, opacity .25s ease, padding .35s ease;
+  }
+  .vocab__row.is-open .vocab__def { max-height: 200px; opacity: 1; }
+-->
