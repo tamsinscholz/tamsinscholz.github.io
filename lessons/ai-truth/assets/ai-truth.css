@@ -258,7 +258,7 @@ body.no-sparkles .ai-btn {
 }
 .audit__row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   gap: 12px;
   padding: 8px 4px;
