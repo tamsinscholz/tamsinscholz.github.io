@@ -246,7 +246,20 @@ strong { font-weight: 800; }
   font-size: .85rem;
   font-style: italic;
   color: var(--ink-faint);
+  cursor: pointer;
+  filter: blur(5px);
+  user-select: none;
+  border-radius: 2px;
+  outline-offset: 2px;
+  transition: filter .3s ease;
 }
+.vocab__en:hover:not([aria-pressed="true"]) { filter: blur(3px); }
+.vocab__en[aria-pressed="true"] {
+  filter: blur(0);
+  cursor: default;
+  user-select: text;
+}
+.vocab__en:focus-visible { outline: 2px solid var(--accent); }
 .vocab__en em { color: var(--accent); font-weight: normal; }
 
 .idiom {

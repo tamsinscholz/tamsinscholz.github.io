@@ -9,6 +9,18 @@
     });
   }
 
+  // Englische Übersetzung: erst verschwommen, beim Antippen scharf.
+  for (const en of document.querySelectorAll(".vocab__en")) {
+    en.setAttribute("role", "button");
+    en.setAttribute("tabindex", "0");
+    en.setAttribute("aria-pressed", "false");
+    const reveal = () => en.setAttribute("aria-pressed", "true");
+    en.addEventListener("click", reveal);
+    en.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reveal(); }
+    });
+  }
+
   // Lyrics-Marker
   const KEY = "summerSchool2026.lesson.german-schrei.marks";
   const counts = document.getElementById("counts");
