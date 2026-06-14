@@ -1,4 +1,4 @@
-// Lesson 2 (german-aura) — vocab chip toggles + persist caption draft.
+// Lektion 2 (german-aura) — Vokabel-Chips + Caption-Entwurf speichern.
 (function () {
   for (const chip of document.querySelectorAll(".chip")) {
     chip.addEventListener("click", () => {
@@ -14,7 +14,7 @@
   const savedNote = document.getElementById("caption-saved");
   if (!ta) return;
 
-  // vocab words to count — must match data-de attrs on chips.
+  // Vokabeln zum Mitzählen — muss zu data-de der Chips passen.
   const VOCAB = [...document.querySelectorAll(".chip")].map(c => c.dataset.de.toLowerCase());
 
   const wordsUsed = (text) => {
@@ -22,7 +22,8 @@
     return VOCAB.filter(w => t.includes(w)).length;
   };
   const render = () => {
-    counter.textContent = `${wordsUsed(ta.value)} vocab word${wordsUsed(ta.value) === 1 ? "" : "s"} used`;
+    const n = wordsUsed(ta.value);
+    counter.textContent = `${n} ${n === 1 ? "Vokabel" : "Vokabeln"} benutzt`;
   };
 
   ta.value = localStorage.getItem(KEY) || "";

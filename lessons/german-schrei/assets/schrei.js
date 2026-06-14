@@ -1,6 +1,6 @@
-// Lesson 6 (german-schrei) — clickable lyric highlighter (3 states) + vocab reveal.
+// Lektion 6 (german-schrei) — Lyrics-Marker (3 Zustände) + Vokabel-Aufdeckung.
 (function () {
-  // vocab reveal (shared pattern)
+  // Vokabel-Aufdeckung
   for (const term of document.querySelectorAll(".vocab__term")) {
     term.addEventListener("click", () => {
       const row = term.closest(".vocab__row");
@@ -9,7 +9,7 @@
     });
   }
 
-  // lyric highlighter
+  // Lyrics-Marker
   const KEY = "summerSchool2026.lesson.german-schrei.marks";
   const counts = document.getElementById("counts");
   const lines = document.querySelectorAll(".lyric[data-i]");
@@ -25,7 +25,9 @@
       if (v === "insult") insult++;
       else if (v === "empathy") empathy++;
     }
-    counts.textContent = `${insult} insult · ${empathy} empathy`;
+    const beleid = `${insult} ${insult === 1 ? "Beleidigung" : "Beleidigungen"}`;
+    const empa = `${empathy} ${empathy === 1 ? "Empathie" : "Empathien"}`;
+    counts.textContent = `${beleid} · ${empa}`;
   };
 
   const apply = (line) => {
