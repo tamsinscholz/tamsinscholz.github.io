@@ -1,0 +1,309 @@
+/* Summer School 2026 — landing styles. Lesson pages bring their own. */
+
+:root {
+  --ink: #1c1d22;
+  --ink-soft: #4a4d57;
+  --ink-faint: #8a8e99;
+  --paper: #f6f3ec;
+  --paper-deep: #ece7dc;
+  --rule: #d8d1c1;
+  --accent: #5b4eb2;
+  --accent-soft: #e3dffb;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 10px 30px rgba(0,0,0,.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-serif, Georgia, "Iowan Old Style", "Apple Garamond", serif;
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(circle at 90% 80%, rgba(0,0,0,.04), transparent 60%);
+}
+
+.landing {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 8vh 24px 12vh;
+}
+
+.landing__head {
+  text-align: center;
+  margin-bottom: 7vh;
+}
+
+.landing__title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  margin: 0 0 .4rem;
+  line-height: 1.05;
+  user-select: none;
+}
+
+.landing__title-year {
+  display: block;
+  font-size: .42em;
+  letter-spacing: .25em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  margin-top: .4em;
+}
+
+.landing__lede {
+  margin: 0;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+/* ---- Grid of lesson cards ------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+/* ---- Card ----------------------------------------------------- */
+
+.card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--paper-deep);
+  box-shadow: var(--shadow);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+.card[data-state="unlocked"] {
+  --card-bg: var(--accent-soft, #efece1);
+  --card-fg: var(--accent, #2a2a2a);
+}
+
+.card[data-state="unlocked"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px rgba(0,0,0,.05), 0 18px 40px rgba(0,0,0,.10);
+}
+
+.card__face {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity .35s var(--ease);
+}
+
+.card__face--locked {
+  background:
+    linear-gradient(160deg, rgba(255,255,255,.5), rgba(0,0,0,.04));
+  color: var(--ink-soft);
+  opacity: 1;
+}
+
+.card__face--unlocked {
+  background: var(--card-bg);
+  color: var(--card-fg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card[data-state="unlocked"] .card__face--locked { opacity: 0; pointer-events: none; }
+.card[data-state="unlocked"] .card__face--unlocked { opacity: 1; pointer-events: auto; }
+
+/* card content */
+
+.card__number {
+  font-size: 1.7rem;
+  letter-spacing: .02em;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.card[data-state="locked"] .card__number { color: var(--ink-soft); }
+
+.card__subtitle {
+  margin-top: 6px;
+  font-size: .8rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.card[data-state="unlocked"] .card__subtitle {
+  color: var(--card-fg);
+  opacity: .65;
+}
+
+.card__teaser {
+  margin: auto 0 12px;
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: .95rem;
+  line-height: 1.35;
+}
+
+.card__title {
+  margin: auto 0 6px;
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.005em;
+}
+
+.card__pill {
+  align-self: flex-start;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.55);
+  margin-top: 8px;
+}
+
+/* unlock button */
+
+.card__unlock {
+  align-self: flex-start;
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border: 1px solid var(--ink-soft);
+  background: transparent;
+  color: var(--ink-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+
+.card__unlock:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* unlock form */
+
+.card__form {
+  display: flex;
+  align-self: stretch;
+  gap: 6px;
+  margin-top: 4px;
+  animation: slidein .25s var(--ease);
+}
+
+.card__input {
+  flex: 1;
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  background: rgba(255,255,255,.7);
+  border-radius: 8px;
+  min-width: 0;
+}
+
+.card__input:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: -1px;
+  border-color: transparent;
+}
+
+.card__submit {
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  padding: 0 12px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card.is-wrong .card__form { animation: shake .35s var(--ease); }
+.card.is-wrong .card__input { border-color: #b14b3a; }
+
+@keyframes slidein {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+
+/* unlock celebration: brief glow */
+.card.is-just-unlocked {
+  animation: pop .55s var(--ease);
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.04); box-shadow: 0 0 0 6px var(--accent-soft); }
+  100% { transform: scale(1); }
+}
+
+/* ---- Footer --------------------------------------------------- */
+
+.landing__foot {
+  margin-top: 8vh;
+  text-align: center;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.landing__hint { margin: 0 0 1.5rem; }
+
+.ghost {
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--ink-faint);
+  border: 1px dashed var(--rule);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+.ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ---- Mobile --------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .landing { padding: 6vh 16px 9vh; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card { aspect-ratio: 3 / 4.2; }
+  .card__face { padding: 14px; }
+  .card__number { font-size: 1.3rem; }
+  .card__title { font-size: 1.1rem; }
+  .card__teaser { font-size: .85rem; }
+}

@@ -1,0 +1,84 @@
+{
+  "_comment": "Add a new lesson by appending an entry. Codes are uppercased before hashing; user input is uppercased before comparison so it's case-insensitive.",
+  "storageKey": "summerSchool2026.unlocked",
+  "masterCodeHash": "eb0ee4bf1e18851723978bd80896a9d55450e49be6f9b4045193a7bcc8b79608",
+  "lessons": [
+    {
+      "slug": "symbols",
+      "number": 1,
+      "title": "The # is actually two letters",
+      "subtitle": "Linguistics",
+      "lockedTeaser": "The symbols on your keyboard hide ancient secrets.",
+      "accent": "#8B6F47",
+      "accentSoft": "#E8DCC4",
+      "unlockHash": "fa06ea5678c7951b58dc8dda8008bafbd212d25142a26cbf0e574d6b4704690f",
+      "href": "lessons/symbols/"
+    },
+    {
+      "slug": "german-aura",
+      "number": 2,
+      "title": "Was ist Aura?",
+      "subtitle": "German · Slang",
+      "lockedTeaser": "Modern German you don't get in textbooks.",
+      "accent": "#E8669B",
+      "accentSoft": "#FBE3EE",
+      "unlockHash": "8db695521cae2b114595dc442e5ef4a6976c693823b8634d416f6c28723878b6",
+      "href": "lessons/german-aura/"
+    },
+    {
+      "slug": "sigmoids",
+      "number": 3,
+      "title": "Why nothing grows forever",
+      "subtitle": "Math · Growth curves",
+      "lockedTeaser": "Some shapes show up everywhere once you see them.",
+      "accent": "#2E7D5B",
+      "accentSoft": "#D4E8DC",
+      "unlockHash": "33c6d3ad5adfb65f749674510c088b4151a1bb6bfe571fffb1408bf144246ac4",
+      "href": "lessons/sigmoids/"
+    },
+    {
+      "slug": "ai-society",
+      "number": 4,
+      "title": "Is AI the problem, or exposing one?",
+      "subtitle": "Society · AI",
+      "lockedTeaser": "Maybe AI is showing us something that was already broken.",
+      "accent": "#1E2A38",
+      "accentSoft": "#D5DCE3",
+      "unlockHash": "be335c8e8b5782ce63f9c756f6ad9e25dbddef6d73aba2e1f207e6e2e3defc1c",
+      "href": "lessons/ai-society/"
+    },
+    {
+      "slug": "art-imagine",
+      "number": 5,
+      "title": "Make something that didn't exist this morning",
+      "subtitle": "Art · Make",
+      "lockedTeaser": "A creative reset. Make a thing. Anything.",
+      "accent": "#D4A574",
+      "accentSoft": "#F5EDE2",
+      "unlockHash": "1fc8ffa5cdc21d0b250f123c397289330eb24aedd65e5c2524cafbda5a4926ee",
+      "href": "lessons/art-imagine/"
+    },
+    {
+      "slug": "german-schrei",
+      "number": 6,
+      "title": "A love song to a bully",
+      "subtitle": "German · Punk · 1993",
+      "lockedTeaser": "The most famous German rock song aimed at the kid throwing rocks.",
+      "accent": "#C0392B",
+      "accentSoft": "#F4D5D1",
+      "unlockHash": "24944c6e2ba9a17939cfaf2051776e665758c734f8df1995bba13c5111b1321e",
+      "href": "lessons/german-schrei/"
+    },
+    {
+      "slug": "ai-truth",
+      "number": 7,
+      "title": "Why is there a sparkle on every button?",
+      "subtitle": "Education · AI · Hype",
+      "lockedTeaser": "Look closer at every app you use. Sparkles everywhere. Why?",
+      "accent": "#7B6AB6",
+      "accentSoft": "#E1DCEE",
+      "unlockHash": "0c48ec4a8d7ba94d92769315846779b3519fe23c3d8634841b46896cc8b42254",
+      "href": "lessons/ai-truth/"
+    }
+  ]
+}

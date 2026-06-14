@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 3 · Why nothing grows forever</title>
+  <link rel="stylesheet" href="assets/sigmoids.css">
+</head>
+<body class="graphpaper">
+  <a class="back" href="../../">← all lessons</a>
+
+  <main class="page">
+
+    <header class="hero">
+      <p class="hero__kicker">Lesson 3 · Math · Growth curves</p>
+      <h1 class="hero__title">Why nothing grows<br><em>forever</em>.</h1>
+      <p class="hero__sub">Things that grow fast look unstoppable — until they don't. The shape this makes on a graph is called a <strong>sigmoid</strong>. Once you can see it, you spot it everywhere.</p>
+    </header>
+
+    <section class="block block--intro">
+      <h2>Intro</h2>
+      <p>TikTok followers, a viral band, your height between 11 and 13 — they all look like they could keep climbing. But every fast-growing thing in the real world eventually slows down. That slowdown is the <strong>S-curve</strong>. The name comes from the Greek letter σ ("sigma"), which looks like an S.</p>
+    </section>
+
+    <section class="block block--curves">
+      <h2>Three shapes to know</h2>
+      <p class="block__lede">Hover (or tap) each curve to see what kind of growth it represents.</p>
+
+      <div class="curves" id="curves">
+        <figure class="curve" data-curve="linear">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="curve__path" d="M 0 100 L 100 0"/>
+          </svg>
+          <figcaption>
+            <h3>Linear</h3>
+            <p>You add the same amount each year. Steady. Predictable. Doesn't bend.</p>
+            <p class="curve__example"><em>Example:</em> the number of birthdays you've had.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="curve" data-curve="exponential">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="curve__path" d="M 0 100 Q 60 100 80 60 T 100 0"/>
+          </svg>
+          <figcaption>
+            <h3>Exponential</h3>
+            <p>You multiply each year. Slow start, then a rocket. Looks unstoppable.</p>
+            <p class="curve__example"><em>Example:</em> a viral video in its first 24 hours.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="curve" data-curve="sigmoid">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="curve__path" d="M 0 95 C 30 95, 35 5, 100 5"/>
+          </svg>
+          <figcaption>
+            <h3>Sigmoid (S-curve)</h3>
+            <p>Slow start. Fast middle. Slow finish. Hits a ceiling and flattens out.</p>
+            <p class="curve__example"><em>Example:</em> your height from age 0 to 30.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block block--watch">
+      <h2>Read · about 10 minutes</h2>
+      <p class="block__lede">It's a short article. Mark 2 sentences that confused you and 1 sentence that surprised you.</p>
+      <a class="readlink" href="https://www.astralcodexten.com/p/the-sigmoids-wont-save-you" target="_blank" rel="noopener">
+        <span class="readlink__title">The Sigmoids Won't Save You</span>
+        <span class="readlink__site">astralcodexten.com →</span>
+      </a>
+    </section>
+
+    <section class="block block--vocab">
+      <h2>Words worth knowing</h2>
+      <p class="block__lede">Try to guess each meaning first, then tap to reveal.</p>
+      <ul class="vocab">
+        <li class="vocab__row">
+          <button class="vocab__term" type="button" aria-expanded="false">exponential</button>
+          <p class="vocab__def">growing by multiplying (×2, ×2, ×2…) instead of adding</p>
+        </li>
+        <li class="vocab__row">
+          <button class="vocab__term" type="button" aria-expanded="false">plateau</button>
+          <p class="vocab__def">a flat top — growth has stopped</p>
+        </li>
+        <li class="vocab__row">
+          <button class="vocab__term" type="button" aria-expanded="false">inflection point</button>
+          <p class="vocab__def">the spot on an S-curve where growth flips from speeding up to slowing down</p>
+        </li>
+        <li class="vocab__row">
+          <button class="vocab__term" type="button" aria-expanded="false">saturation</button>
+          <p class="vocab__def">when something is "full" and can't grow more (the market is saturated; the sponge is saturated)</p>
+        </li>
+        <li class="vocab__row">
+          <button class="vocab__term" type="button" aria-expanded="false">trajectory</button>
+          <p class="vocab__def">the path something is taking over time</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block block--task">
+      <h2>Solo task · Sketch four sigmoids from your own life</h2>
+      <p>Use real paper and pencil. Draw 4 quick graphs. X-axis = time. Y-axis = how much. Don't worry about exact numbers — just the shape.</p>
+      <ol class="prompts">
+        <li>Your height from age 0 to age 30. <span class="hint">(Where's the plateau?)</span></li>
+        <li>Number of followers on a TikTok that goes viral and then fades.</li>
+        <li>How well you play piano if you practice 1 hour every day for 10 years.</li>
+        <li>Number of people in Canada who own a smartphone, from 2007 (iPhone launch) to now.</li>
+      </ol>
+      <p>Underneath, answer in one sentence: <strong>which was hardest to draw, and why?</strong></p>
+    </section>
+
+    <section class="block block--discuss">
+      <h2>Discuss with Oma and Opa</h2>
+      <ol class="discuss">
+        <li>Show them your 4 graphs. Do they agree on where each one plateaus?</li>
+        <li>Ask: <em>"Name one thing you saw take off like a rocket in your lifetime and then plateau."</em> (TV? Cars? CDs? Air travel? Email?)</li>
+        <li>People keep saying "AI is growing exponentially." If sigmoids are the real shape — when do they think it might bend? What would have to be true for it to bend?</li>
+        <li>Scott's point: predicting <em>when</em> the curve bends is the hard part. Why is that so hard?</li>
+      </ol>
+    </section>
+
+    <section class="block block--stretch">
+      <h2>Stretch</h2>
+      <p>A startup founder shows you a graph where their app's user count is going up exponentially. They want you to invest your savings. What three questions would you ask before deciding?</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <a class="back" href="../../">← all lessons</a>
+  </footer>
+
+  <script src="assets/sigmoids.js" defer></script>
+</body>
+</html>

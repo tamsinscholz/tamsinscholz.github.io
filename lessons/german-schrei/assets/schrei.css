@@ -1,0 +1,272 @@
+/* Lesson 6 — german-schrei. Theme: punk zine, marker highlights. */
+
+:root {
+  --ink: #15171c;
+  --ink-soft: #3f434c;
+  --ink-faint: #888b94;
+  --paper: #f1eee6;
+  --paper-rough: #e8e3d3;
+  --rule: #15171c;
+  --accent: #c0392b;
+  --accent-deep: #8e2a1e;
+  --insult: #ff3c2f;
+  --empathy: #2e7dc8;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+body.zine {
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(0,0,0,.05), transparent 50%),
+    repeating-linear-gradient(
+      45deg, transparent 0 4px,
+      rgba(0,0,0,.01) 4px 5px
+    );
+  padding-bottom: 6vh;
+}
+
+.back {
+  display: inline-block;
+  margin: 22px 0 0 24px;
+  font-size: .78rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--paper-rough);
+  padding: 4px 10px;
+  transform: rotate(-1deg);
+  border: 1.5px solid var(--ink);
+}
+.back:hover { background: var(--ink); color: var(--paper); }
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 28px 40px;
+}
+
+/* ---- Hero ---------------------------------------------------- */
+.hero {
+  padding: 4vh 0 5vh;
+  text-align: left;
+  position: relative;
+}
+.hero__kicker {
+  margin: 0 0 .8rem;
+  font-size: .75rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 800;
+}
+.hero__title {
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  font-weight: 900;
+  margin: 0 0 1rem;
+  line-height: .95;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+.hero__strike {
+  position: relative;
+  display: inline-block;
+  color: var(--ink);
+}
+.hero__strike::after {
+  content: "";
+  position: absolute;
+  left: -4%; right: -4%;
+  top: 55%;
+  height: 8px;
+  background: var(--accent);
+  transform: rotate(-3deg);
+}
+.hero__sub {
+  max-width: 32em;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+
+/* ---- Blocks ------------------------------------------------- */
+.block {
+  margin: 5vh 0;
+  background: var(--paper-rough);
+  padding: 22px 24px;
+  border: 1.5px solid var(--ink);
+  position: relative;
+}
+.block:nth-of-type(even) { transform: rotate(-.3deg); }
+.block:nth-of-type(odd)  { transform: rotate(.2deg); }
+
+.block h2 {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: .85rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 6px 14px;
+  margin: -34px 0 14px;
+  transform: rotate(-1deg);
+}
+.block p { margin: 0 0 .8rem; }
+.block__lede { font-style: italic; color: var(--ink-soft); }
+
+em { color: var(--accent-deep); font-style: italic; font-weight: 600; }
+strong { font-weight: 800; }
+
+/* ---- Highlighter task --------------------------------------- */
+.key {
+  display: inline-block;
+  padding: 1px 8px;
+  font-weight: 600;
+  border-radius: 2px;
+  margin: 0 1px;
+}
+.key--insult  { background: var(--insult);  color: white; }
+.key--empathy { background: var(--empathy); color: white; }
+
+.lyrics {
+  background: white;
+  border: 1.5px solid var(--ink);
+  padding: 18px 22px;
+  margin-top: 14px;
+  font-family: ui-serif, Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.lyric__stanza {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .85rem;
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.lyric__verse { margin: 0 0 14px; }
+.lyric__chorus { font-weight: 600; font-style: italic; }
+.lyric__shout {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  text-align: center;
+  margin: 8px 0 18px;
+  color: var(--accent);
+}
+.lyric {
+  margin: 0;
+  padding: 1px 4px;
+  cursor: pointer;
+  transition: background .2s;
+  user-select: none;
+}
+.lyric:hover { background: rgba(0,0,0,.04); }
+.lyric[data-mark="insult"]  { background: var(--insult);  color: white; }
+.lyric[data-mark="empathy"] { background: var(--empathy); color: white; }
+.lyric[data-mark="insult"] em,
+.lyric[data-mark="empathy"] em { color: white; }
+
+.counts {
+  margin-top: 14px;
+  text-align: right;
+  font-size: .9rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ---- Video --------------------------------------------------- */
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+}
+.video iframe { width: 100%; height: 100%; border: 0; }
+
+/* ---- Vocab -------------------------------------------------- */
+.vocab { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--ink); }
+.vocab__row { border-bottom: 1px dashed var(--ink-soft); }
+.vocab__term {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 12px 4px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-family: ui-serif, Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--accent-deep);
+  text-align: left;
+  cursor: pointer;
+}
+.vocab__term:hover { background: rgba(0,0,0,.03); }
+.vocab__term::after {
+  content: "+";
+  display: inline-grid; place-items: center;
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  font-style: normal; font-weight: 700; font-size: 1rem; line-height: 1;
+  flex: none;
+}
+.vocab__term[aria-expanded="true"]::after { content: "−"; background: var(--ink); color: var(--paper); }
+.vocab__def {
+  margin: 0; padding: 0 4px 12px;
+  color: var(--ink-soft);
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease, padding .35s ease;
+}
+.vocab__row.is-open .vocab__def { max-height: 200px; opacity: 1; }
+
+.idiom {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  border-left: 6px solid var(--accent);
+}
+.idiom__line {
+  margin: 0 0 6px;
+  font-family: ui-serif, Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+}
+.idiom__gloss { margin: 0; font-size: .92rem; color: #ddd; }
+.idiom em { color: var(--accent); }
+
+/* ---- Discussion --------------------------------------------- */
+.discuss { margin: 0; padding-left: 1.4em; }
+.discuss li { padding: 6px 0; }
+.discuss li::marker { color: var(--accent); font-weight: 800; }
+.hint { color: var(--ink-faint); font-style: italic; font-size: .9em; }
+
+/* ---- Footer -------------------------------------------------- */
+.footer {
+  margin-top: 6vh;
+  text-align: center;
+  padding-top: 24px;
+}
+.footer .back { margin: 0; }

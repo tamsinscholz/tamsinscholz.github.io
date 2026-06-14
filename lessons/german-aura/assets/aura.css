@@ -1,0 +1,252 @@
+/* Lesson 2 — german-aura. Theme: pastel Gen-Z, faux-Instagram. */
+
+:root {
+  --ink: #2c1633;
+  --ink-soft: #5a4366;
+  --ink-faint: #9686a0;
+  --paper: #fdf3f7;
+  --rule: rgba(232, 102, 155, .25);
+  --accent: #e8669b;
+  --accent-deep: #c84a83;
+  --accent-soft: #fbe3ee;
+  --mint: #b8e6d0;
+  --peach: #ffd6c2;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 10% 0%,  #ffd1e1 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, #d6eaff 0%, transparent 38%),
+    radial-gradient(circle at 50% 100%, #e8d6ff 0%, transparent 50%);
+  padding-bottom: 6vh;
+}
+
+.back {
+  display: inline-block;
+  margin: 22px 0 0 24px;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 14px;
+  background: rgba(255,255,255,.6);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+.back:hover { color: var(--accent-deep); }
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 28px 40px;
+}
+
+/* ---- Hero ---------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 4vh 0 6vh;
+}
+.hero__kicker {
+  font-size: .78rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 0 0 1.2rem;
+  font-weight: 600;
+}
+.hero__title {
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  font-weight: 700;
+  margin: 0 0 1rem;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.hero__word {
+  background: linear-gradient(120deg, var(--accent) 30%, #ff9ad1 60%, #c7a4ff 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+}
+.hero__sub {
+  color: var(--ink-soft);
+  max-width: 30em;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+.hero__sub em { color: var(--accent-deep); font-style: italic; }
+
+/* ---- Blocks ------------------------------------------------- */
+.block {
+  margin: 4vh 0;
+  background: rgba(255,255,255,.55);
+  border-radius: 22px;
+  padding: 22px 24px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 22px rgba(232,102,155,.08);
+}
+.block h2 {
+  font-size: .95rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 0 0 .8rem;
+  font-weight: 700;
+}
+.block p { margin: 0 0 .8rem; }
+.block__lede { font-style: italic; color: var(--ink-soft); }
+
+.aside {
+  background: var(--accent-soft);
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-style: italic;
+  color: var(--accent-deep);
+}
+em { color: var(--accent-deep); font-style: italic; }
+
+/* ---- Video --------------------------------------------------- */
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,.15);
+}
+.video iframe { width: 100%; height: 100%; border: 0; }
+
+/* ---- Vocab chips ------------------------------------------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.chip {
+  font: inherit;
+  font-weight: 600;
+  background: white;
+  color: var(--ink);
+  border: 1.5px solid var(--accent-soft);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all .25s var(--ease);
+  position: relative;
+  white-space: nowrap;
+}
+.chip::before { content: attr(data-de); }
+.chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.chip[aria-expanded="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  padding-right: 14px;
+}
+.chip[aria-expanded="true"]::before { content: attr(data-de) " · "; opacity: .9; }
+.chip[aria-expanded="true"]::after  { content: attr(data-en); font-weight: 400; font-style: italic; }
+
+@media (max-width: 480px) {
+  .chip { white-space: normal; text-align: left; }
+}
+
+/* ---- Caption composer (faux IG) ----------------------------- */
+.composer {
+  margin-top: 16px;
+  background: white;
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+.composer__phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e6ee;
+}
+.composer__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ffd1e1, #c7a4ff, #d6eaff, #ffd1e1);
+}
+.composer__handle {
+  font-weight: 600;
+  font-size: .95rem;
+}
+.composer__text {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  resize: vertical;
+  font: inherit;
+  font-size: 1rem;
+  background: transparent;
+  padding: 12px 0 8px;
+  color: var(--ink);
+  min-height: 110px;
+}
+.composer__text::placeholder { color: var(--ink-faint); font-style: italic; }
+.composer__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0e6ee;
+  padding-top: 10px;
+}
+.composer__count {
+  font-size: .85rem;
+  color: var(--ink-faint);
+}
+.composer__save {
+  font: inherit;
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--accent);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.composer__save:hover { color: var(--accent-deep); }
+
+.caption__saved {
+  text-align: right;
+  margin-top: 6px;
+  font-size: .8rem;
+  color: var(--accent-deep);
+  font-style: italic;
+}
+
+/* ---- Discussion --------------------------------------------- */
+.block--discuss { background: linear-gradient(135deg, #fff3f8, #e3f3ff); }
+.discuss { margin: 0; padding-left: 1.4em; }
+.discuss li { padding: 6px 0; }
+.discuss li::marker { color: var(--accent); font-weight: 700; }
+
+/* ---- Footer -------------------------------------------------- */
+.footer {
+  margin-top: 6vh;
+  text-align: center;
+  padding-top: 24px;
+}
+.footer .back { margin: 0; }

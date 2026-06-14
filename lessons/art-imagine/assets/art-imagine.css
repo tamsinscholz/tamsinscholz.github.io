@@ -1,0 +1,255 @@
+/* Lesson 5 — art-imagine. Theme: gallery white, sparse, generous space. */
+
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #5b5b5b;
+  --ink-faint: #999;
+  --paper: #fafaf7;
+  --rule: #e7e7e3;
+  --accent: #d4a574;
+  --accent-deep: #a87a44;
+  --pop: #ff6b35;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.gallery { min-height: 100vh; padding-bottom: 6vh; }
+
+.back {
+  display: inline-block;
+  margin: 22px 0 0 24px;
+  font-size: .78rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.back:hover { color: var(--pop); }
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 28px 40px;
+}
+
+/* ---- Hero ---------------------------------------------------- */
+.hero {
+  text-align: left;
+  padding: 6vh 0 8vh;
+}
+.hero__kicker {
+  margin: 0 0 1.5rem;
+  font-size: .75rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.hero__title {
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  font-weight: 300;
+  margin: 0 0 1.5rem;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+.hero__sub {
+  max-width: 32em;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+/* ---- Blocks ------------------------------------------------- */
+.block { margin: 7vh 0; }
+.block h2 {
+  font-size: .8rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 0 0 1.2rem;
+}
+.block p { margin: 0 0 1rem; }
+.block__lede { color: var(--ink-soft); font-style: italic; }
+
+em { color: var(--pop); font-style: italic; }
+strong { font-weight: 600; }
+
+.aside {
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--accent-deep);
+}
+
+/* ---- Visit link --------------------------------------------- */
+.visitlink {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border: 1px solid var(--rule);
+  background: white;
+  color: var(--ink);
+  text-decoration: none;
+  margin: 8px 0 24px;
+  transition: border-color .25s, transform .25s var(--ease);
+}
+.visitlink:hover {
+  border-color: var(--pop);
+  transform: translateY(-2px);
+}
+.visitlink__title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -.005em;
+}
+.visitlink__arrow {
+  font-size: 1.5rem;
+  color: var(--pop);
+}
+
+.notes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.notes li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+/* ---- Options ------------------------------------------------ */
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 16px 0 32px;
+}
+.option {
+  position: relative;
+  padding: 24px 22px;
+  border: 1px solid var(--rule);
+  background: white;
+  margin: 0;
+  transition: transform .25s var(--ease), border-color .25s;
+}
+.option:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+.option__letter {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-size: 2rem;
+  font-weight: 200;
+  color: var(--accent);
+  line-height: 1;
+}
+.option h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -.005em;
+}
+.option p { font-size: .92rem; color: var(--ink-soft); margin: 0; }
+
+/* ---- Timer -------------------------------------------------- */
+.timer {
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+}
+.timer__label {
+  font-size: .78rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 16px;
+}
+.timer__display {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: clamp(3rem, 12vw, 5.5rem);
+  font-weight: 200;
+  letter-spacing: .02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.timer__display.is-warning { color: var(--pop); }
+.timer__display.is-done { color: var(--pop); animation: pulse 1s infinite; }
+@keyframes pulse {
+  50% { opacity: .35; }
+}
+.timer__buttons {
+  margin: 22px 0 12px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.timer__btn {
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: .85rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--paper);
+  border: 1px solid var(--paper);
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.timer__btn:hover { background: var(--paper); color: var(--ink); }
+.timer__rule {
+  margin: 10px 0 0;
+  font-size: .85rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+/* ---- Discussion --------------------------------------------- */
+.block--discuss {
+  padding: 32px;
+  background: white;
+  border-left: 4px solid var(--accent);
+}
+.discuss { margin: 0; padding-left: 1.4em; }
+.discuss li { padding: 6px 0; }
+.discuss li::marker { color: var(--accent); font-weight: 600; }
+
+.constraints {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.constraints li {
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: .95rem;
+  font-style: italic;
+}
+
+/* ---- Footer -------------------------------------------------- */
+.footer {
+  margin-top: 6vh;
+  text-align: center;
+  padding-top: 24px;
+}
+.footer .back { margin: 0; }

@@ -1,0 +1,249 @@
+/* Lesson 3 — sigmoids. Theme: graph paper, mathy. */
+
+:root {
+  --ink: #1a2b2a;
+  --ink-soft: #43544f;
+  --ink-faint: #7a8a85;
+  --paper: #f5f7f3;
+  --grid: #d5e3dc;
+  --grid-bold: #b7cdc2;
+  --rule: #c8d6cf;
+  --accent: #2e7d5b;
+  --accent-deep: #1d5a40;
+  --accent-soft: #d4e8dc;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-serif, "Iowan Old Style", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+body.graphpaper {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-bold) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+  background-position: 0 0;
+  padding-bottom: 6vh;
+}
+
+.back {
+  display: inline-block;
+  margin: 22px 0 0 24px;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 4px 12px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.back:hover { color: var(--accent-deep); border-color: var(--accent); }
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 28px 40px;
+}
+
+/* ---- Hero ---------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 4vh 0 6vh;
+}
+.hero__kicker {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: .8rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 0 0 1.2rem;
+}
+.hero__title {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 500;
+  margin: 0 0 1rem;
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.hero__title em { color: var(--accent); font-style: italic; }
+.hero__sub {
+  color: var(--ink-soft);
+  max-width: 30em;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+/* ---- Blocks -------------------------------------------------- */
+.block {
+  margin: 5vh 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 22px 24px;
+}
+.block h2 {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: .9rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 0 0 .9rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+.block p { margin: 0 0 .8rem; }
+.block__lede { font-style: italic; color: var(--ink-soft); }
+
+em { color: var(--accent); font-style: italic; }
+strong { color: var(--accent-deep); }
+
+/* ---- Curves -------------------------------------------------- */
+.curves {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.curve {
+  margin: 0;
+  padding: 14px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.curve:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(46,125,91,.12);
+}
+.curve svg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: repeating-linear-gradient(0deg, transparent, transparent 9px, var(--grid) 9px, var(--grid) 10px),
+              repeating-linear-gradient(90deg, transparent, transparent 9px, var(--grid) 9px, var(--grid) 10px);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.curve__path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: draw 1.4s ease forwards;
+}
+.curve[data-curve="exponential"] .curve__path { stroke: #b14b3a; animation-delay: .2s; }
+.curve[data-curve="sigmoid"] .curve__path { stroke: var(--accent-deep); animation-delay: .4s; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.curve h3 {
+  margin: 12px 0 4px;
+  font-size: 1.1rem;
+  color: var(--accent-deep);
+}
+.curve p { font-size: .92rem; color: var(--ink-soft); margin: 0 0 4px; }
+.curve__example { font-style: italic; color: var(--ink-faint); }
+
+/* ---- Read link ---------------------------------------------- */
+.readlink {
+  display: block;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background .2s, transform .2s var(--ease);
+}
+.readlink:hover { background: white; transform: translateY(-2px); }
+.readlink__title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--accent-deep);
+}
+.readlink__site {
+  display: block;
+  margin-top: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: .85rem;
+  color: var(--ink-soft);
+}
+
+/* ---- Vocab (shared interaction pattern) --------------------- */
+.vocab { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.vocab__row { border-bottom: 1px solid var(--rule); }
+.vocab__term {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 14px 4px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1.02rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--accent-deep);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background .15s;
+}
+.vocab__term:hover { background: rgba(46,125,91,.06); }
+.vocab__term::after {
+  content: "+";
+  display: inline-grid; place-items: center;
+  width: 22px; height: 22px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  color: var(--ink-faint);
+  font-style: normal; font-weight: 500; font-size: 1rem; line-height: 1;
+  flex: none;
+  transition: transform .25s ease;
+}
+.vocab__term[aria-expanded="true"]::after { content: "−"; color: var(--accent); border-color: var(--accent); }
+.vocab__def {
+  margin: 0; padding: 0 4px 14px;
+  color: var(--ink-soft);
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease, padding .35s ease;
+}
+.vocab__row.is-open .vocab__def { max-height: 200px; opacity: 1; }
+
+/* ---- Prompts / discussion ----------------------------------- */
+.prompts, .discuss {
+  margin: 0;
+  padding-left: 1.4em;
+}
+.prompts li, .discuss li { padding: 6px 0; }
+.prompts li::marker, .discuss li::marker { color: var(--accent); font-weight: 600; }
+.hint { color: var(--ink-faint); font-style: italic; font-size: .9em; }
+
+.block--discuss { background: var(--accent-soft); border-color: var(--accent); }
+
+/* ---- Footer -------------------------------------------------- */
+.footer {
+  margin-top: 6vh;
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px dashed var(--rule);
+}
+.footer .back { margin: 0; }

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Summer School 2026</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+  <main class="landing">
+    <header class="landing__head">
+      <h1 class="landing__title" id="site-title">Summer School<span class="landing__title-year">2026</span></h1>
+      <p class="landing__lede">Seven lessons. Each one stays locked until you have the code.</p>
+    </header>
+
+    <section id="lesson-grid" class="grid" aria-label="Lessons">
+      <!-- cards rendered by landing.js -->
+    </section>
+
+    <footer class="landing__foot">
+      <p class="landing__hint">Ask Oma or Opa for today's code.</p>
+      <p class="landing__reset" id="reset-hint" hidden>
+        <button type="button" id="reset-btn" class="ghost">Reset all unlocks</button>
+      </p>
+    </footer>
+  </main>
+
+  <template id="card-template">
+    <article class="card" data-state="locked">
+      <div class="card__face card__face--locked">
+        <span class="card__number"></span>
+        <span class="card__subtitle"></span>
+        <p class="card__teaser"></p>
+        <button class="card__unlock" type="button">Unlock</button>
+        <form class="card__form" hidden>
+          <input type="text" class="card__input" inputmode="text" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="code" maxlength="16" aria-label="Unlock code">
+          <button type="submit" class="card__submit" aria-label="Submit code">→</button>
+        </form>
+      </div>
+      <a class="card__face card__face--unlocked" href="#">
+        <span class="card__number"></span>
+        <span class="card__subtitle"></span>
+        <h2 class="card__title"></h2>
+        <span class="card__pill">unlocked</span>
+      </a>
+    </article>
+  </template>
+
+  <script src="assets/js/landing.js" defer></script>
+</body>
+</html>
