@@ -79,6 +79,17 @@
       "accentSoft": "#E1DCEE",
       "unlockHash": "0c48ec4a8d7ba94d92769315846779b3519fe23c3d8634841b46896cc8b42254",
       "href": "lessons/ai-truth/"
+    },
+    {
+      "slug": "bundeslaender",
+      "number": 8,
+      "title": "Sechzehn Länder, ein Land",
+      "subtitle": "Deutsch · Geographie",
+      "lockedTeaser": "Deutschland hat 16 davon. Wie heißen sie alle?",
+      "accent": "#2C5F7F",
+      "accentSoft": "#D6E3EA",
+      "unlockHash": "0bbc8a934c544ebc0bd7e40e9cb371110e6561e83bd0fbf6ad8bce44d9db8e8b",
+      "href": "lessons/bundeslaender/"
     }
   ]
 }

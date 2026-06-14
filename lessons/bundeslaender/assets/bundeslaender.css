@@ -1,0 +1,551 @@
+/* Lektion 8 — bundeslaender. Theme: alter Atlas / Wandkarte. */
+
+:root {
+  --ink: #1f2e3a;
+  --ink-soft: #41525f;
+  --ink-faint: #7a8893;
+  --paper: #f3ead3;
+  --paper-deep: #ead9b5;
+  --rule: #c7b896;
+  --accent: #2c5f7f;
+  --accent-deep: #1a4258;
+  --accent-soft: #d6e3ea;
+  --correct: #5c8c4a;
+  --correct-soft: #d8e6cc;
+  --wrong: #b35454;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-serif, "Iowan Old Style", "Charter", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 50% 0%,  rgba(255,255,255,.5), transparent 60%),
+    radial-gradient(ellipse at 20% 90%, rgba(199,184,150,.3), transparent 55%),
+    repeating-linear-gradient(0deg,
+      transparent 0 23px,
+      rgba(122,136,147,.04) 23px 24px);
+  padding-bottom: 6vh;
+}
+
+.back {
+  display: inline-block;
+  margin: 22px 0 0 24px;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 14px;
+  background: rgba(255,255,255,.5);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+.back:hover { color: var(--accent-deep); border-color: var(--accent); }
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 28px 40px;
+}
+
+/* ---- Hero ---------------------------------------------------- */
+.hero {
+  padding: 4vh 0 5vh;
+  text-align: center;
+  border-bottom: 1px double var(--rule);
+}
+.hero__kicker {
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .78rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 0 0 1.2rem;
+  font-weight: 600;
+}
+.hero__title {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 700;
+  margin: 0 0 1.1rem;
+  line-height: 1;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.hero__sub {
+  color: var(--ink-soft);
+  max-width: 30em;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  font-style: italic;
+}
+.hero__sub em { color: var(--accent-deep); font-style: italic; }
+
+/* ---- Blocks ------------------------------------------------- */
+.block {
+  margin: 5vh 0;
+}
+.block h2 {
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .82rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 0 0 1rem;
+  font-weight: 700;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.block p { margin: 0 0 .9rem; }
+.block__lede { color: var(--ink-soft); font-style: italic; }
+.aside {
+  background: rgba(255,255,255,.55);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+em { color: var(--accent-deep); font-style: italic; }
+strong { color: var(--ink); }
+
+/* ---- Spontan-Liste (in Einleitung) -------------------------- */
+.spontan {
+  background: rgba(255,255,255,.55);
+  border-left: 3px solid var(--accent);
+  padding: 14px 16px;
+  margin-top: 16px;
+}
+.spontan__prompt {
+  margin: 0 0 10px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.spontan__prompt strong { color: var(--accent-deep); font-style: normal; }
+.spontan__prompt em { color: var(--accent-deep); }
+.spontan__row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.spontan__input {
+  flex: 1;
+  font: inherit;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  background: white;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 8px 12px;
+  outline: 0;
+  transition: border-color .2s var(--ease);
+}
+.spontan__input:focus { border-color: var(--accent); }
+.spontan__input::placeholder { color: var(--ink-faint); font-style: italic; }
+.spontan__add {
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--accent);
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background .2s var(--ease);
+}
+.spontan__add:hover { background: var(--accent-deep); }
+
+.spontan__chips {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 0;
+}
+.spontan__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .9rem;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px 6px 4px 12px;
+  color: var(--ink);
+}
+.spontan__chip.is-unknown {
+  border-style: dashed;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+.spontan__chip-x {
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  background: transparent;
+  color: var(--ink-faint);
+  border: 0;
+  padding: 0 4px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.spontan__chip-x:hover { color: var(--wrong); }
+
+.spontan__count {
+  margin: 8px 0 0;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .82rem;
+  color: var(--ink-faint);
+  letter-spacing: .04em;
+}
+
+/* ---- Read link ---------------------------------------------- */
+.readlink {
+  display: block;
+  background: rgba(255,255,255,.55);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 14px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background .2s var(--ease);
+}
+.readlink:hover { background: var(--accent-soft); }
+.readlink__source {
+  display: block;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 4px;
+}
+.readlink__title {
+  display: block;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--accent-deep);
+}
+.readlink__hint {
+  display: block;
+  margin-top: 4px;
+  font-size: .85rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ---- Vocab -------------------------------------------------- */
+.vocab { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.vocab__row { border-bottom: 1px solid var(--rule); }
+.vocab__term {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  width: 100%; padding: 14px 4px; border: 0; background: transparent;
+  font: inherit; font-size: 1.05rem; font-weight: 600; color: var(--accent-deep);
+  text-align: left; cursor: pointer;
+}
+.vocab__term::after {
+  content: "+"; display: inline-grid; place-items: center;
+  width: 22px; height: 22px;
+  border: 1px solid var(--rule); border-radius: 50%;
+  color: var(--ink-faint);
+  font-weight: 500; font-size: 1rem; line-height: 1; flex: none;
+}
+.vocab__term[aria-expanded="true"]::after { content: "−"; color: var(--accent); border-color: var(--accent); }
+.vocab__def {
+  margin: 0; padding: 0 4px 14px; color: var(--ink-soft);
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease, padding .35s ease;
+}
+.vocab__row.is-open .vocab__def { max-height: 200px; opacity: 1; }
+.vocab__en {
+  display: block;
+  margin-top: 4px;
+  font-size: .85rem;
+  font-style: italic;
+  color: var(--ink-faint);
+  letter-spacing: .02em;
+}
+
+/* ---- Quiz --------------------------------------------------- */
+.quiz {
+  margin-top: 16px;
+}
+.quiz__pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(255,255,255,.55);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  min-height: 56px;
+  margin-bottom: 22px;
+}
+.quiz__pool:empty::before {
+  content: "alle Hauptstädte zugeordnet · ";
+  font-style: italic;
+  color: var(--ink-faint);
+}
+.quiz__pool:empty::after {
+  content: "geschafft!";
+  font-weight: 700;
+  color: var(--correct);
+  letter-spacing: .05em;
+}
+
+.cap {
+  font: inherit;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: .95rem;
+  background: var(--paper-deep);
+  color: var(--ink);
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
+}
+.cap:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.cap[aria-pressed="true"] {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent-deep);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.quiz__states {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: state;
+  display: grid;
+  gap: 8px;
+}
+.state {
+  counter-increment: state;
+  position: relative;
+  background: rgba(255,255,255,.5);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 12px 14px 12px 44px;
+  cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.state::before {
+  content: counter(state, decimal-leading-zero);
+  position: absolute;
+  left: 12px;
+  top: 13px;
+  font-family: ui-sans-serif, Arial, sans-serif;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+.state::after {
+  content: attr(data-state);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  display: block;
+}
+.state .state__hint {
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .82rem;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-top: 2px;
+  display: block;
+}
+.state .state__cap {
+  display: none;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--correct);
+  margin-top: 4px;
+  letter-spacing: .02em;
+}
+.state .state__fact {
+  display: none;
+  font-size: .96rem;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dotted var(--rule);
+  line-height: 1.5;
+}
+
+.state:hover { border-color: var(--accent); }
+.state.is-correct {
+  background: var(--correct-soft);
+  border-color: var(--correct);
+  cursor: default;
+}
+.state.is-correct .state__hint { display: none; }
+.state.is-correct .state__cap { display: block; }
+.state.is-correct .state__fact { display: block; }
+.state.is-correct::before { color: var(--correct); }
+.state.is-correct .state__cap::before {
+  content: "✓ Hauptstadt: ";
+  color: var(--correct);
+  font-weight: 400;
+}
+
+.state.is-wrong {
+  animation: shake .4s var(--ease);
+  border-color: var(--wrong);
+  background: rgba(179,84,84,.08);
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.quiz__score {
+  margin-top: 18px;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .9rem;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+  text-align: right;
+}
+.quiz__score.is-done {
+  color: var(--correct);
+  font-weight: 700;
+}
+
+.quiz__reset {
+  display: block;
+  margin: 12px 0 0 auto;
+  font: inherit;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .82rem;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 6px 14px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.quiz__reset:hover { border-color: var(--accent); color: var(--accent-deep); }
+
+/* ---- Vergleich (Spontan-Liste vs. echte 16) ----------------- */
+.block--compare {
+  background: rgba(255,255,255,.55);
+  border: 1px solid var(--rule);
+  padding: 22px 24px;
+  border-radius: 3px;
+}
+.compare__lede {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+}
+.compare__lede strong { color: var(--accent-deep); }
+.compare__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.compare__col-label {
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.compare__chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.compare__chips:empty::before {
+  content: "—";
+  color: var(--ink-faint);
+  font-style: italic;
+}
+.compare__chip {
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .82rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: white;
+}
+.compare__chips--hit .compare__chip {
+  background: var(--correct-soft);
+  border-color: var(--correct);
+  color: var(--correct);
+  font-weight: 600;
+}
+.compare__chips--miss .compare__chip {
+  color: var(--ink-faint);
+  border-style: dashed;
+}
+
+@media (max-width: 480px) {
+  .compare__cols { grid-template-columns: 1fr; }
+}
+
+/* ---- Discussion --------------------------------------------- */
+.block--discuss {
+  background: rgba(255,255,255,.55);
+  border: 1px solid var(--rule);
+  padding: 22px 24px;
+  border-radius: 3px;
+}
+.discuss { margin: 0; padding-left: 1.4em; }
+.discuss li { padding: 6px 0; }
+.discuss li::marker { color: var(--accent); font-weight: 700; }
+.discuss .hint {
+  display: block;
+  font-size: .85rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ---- Footer -------------------------------------------------- */
+.footer {
+  margin-top: 6vh;
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px double var(--rule);
+}
+.footer .back { margin: 0; }
+
+@media (max-width: 480px) {
+  .page { padding: 24px 18px 32px; }
+  .state { padding-left: 38px; }
+  .state::before { left: 10px; }
+}
