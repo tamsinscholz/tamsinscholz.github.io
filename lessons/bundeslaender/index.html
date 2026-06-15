@@ -42,6 +42,24 @@
       </a>
     </section>
 
+    <section class="block block--task block--map">
+      <h2>Solo-Aufgabe · Wo liegt was?</h2>
+      <p>Tipp erst auf einen <strong>Bundesland-Namen</strong> unten — dann auf die Stelle <strong>auf der Karte</strong>, wo es liegt. Drei sind winzig: das sind die Stadtstaaten. Schau gut hin.</p>
+
+      <div class="map-quiz">
+        <div class="map-pool" id="map-pool" aria-label="Bundesländer zum Platzieren">
+          <!-- Bundesland-Chips werden vom JS eingefügt und gemischt. -->
+        </div>
+
+        <div class="map-wrap">
+          <div class="map-host" id="map-host" role="img" aria-label="Karte von Deutschland — wird beim Öffnen der Seite geladen"></div>
+        </div>
+
+        <p class="map-score" id="map-score">0 von 16 platziert</p>
+        <button class="quiz__reset" type="button" id="map-reset" hidden>Karte zurücksetzen</button>
+      </div>
+    </section>
+
     <section class="block block--vocab">
       <h2>Wortschatz</h2>
       <p class="block__lede">Versuch erst, jede Bedeutung zu erraten. Dann antippen zum Aufdecken.</p>
@@ -90,7 +108,7 @@
     </section>
 
     <section class="block block--task">
-      <h2>Solo-Aufgabe · Bundesländer-Quiz</h2>
+      <h2>Solo-Aufgabe · Hauptstädte-Quiz</h2>
       <p>Tipp erst auf eine <strong>Hauptstadt</strong>, dann auf das passende <strong>Bundesland</strong>. Richtig → das Land öffnet sich und du siehst einen Mini-Fakt. Falsch → versuch es nochmal.</p>
       <p class="block__lede">Drei sind besonders leicht. <em>Kannst du raten, warum?</em></p>
 

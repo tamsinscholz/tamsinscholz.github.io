@@ -283,7 +283,102 @@ strong { color: var(--ink); }
   letter-spacing: .02em;
 }
 
-/* ---- Quiz --------------------------------------------------- */
+/* ---- Karten-Quiz -------------------------------------------- */
+.map-quiz { margin-top: 16px; }
+
+.map-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(255,255,255,.55);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  min-height: 56px;
+  margin-bottom: 22px;
+}
+.map-pool:empty::before {
+  content: "alle Länder auf der Karte · ";
+  font-style: italic;
+  color: var(--ink-faint);
+}
+.map-pool:empty::after {
+  content: "geschafft!";
+  font-weight: 700;
+  color: var(--correct);
+  letter-spacing: .05em;
+}
+
+.map-pool .cap {
+  background: var(--paper-deep);
+}
+
+.map-wrap {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.4), transparent 70%),
+    rgba(255,255,255,.55);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 12px;
+}
+.map {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  margin: 0 auto;
+}
+.map .region {
+  fill: var(--paper-deep);
+  stroke: var(--ink-soft);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: fill .2s var(--ease), stroke .2s var(--ease);
+}
+.map .region:hover { fill: var(--accent-soft); }
+.map .region--city {
+  fill: #c9b994;
+  stroke-width: 1.2;
+}
+.map .region--city:hover { fill: var(--accent-soft); }
+.map .region.is-correct {
+  fill: var(--correct-soft);
+  stroke: var(--correct);
+  cursor: default;
+}
+.map .region.is-correct:hover { fill: var(--correct-soft); }
+.map .region.is-wrong {
+  fill: rgba(179,84,84,.3);
+  stroke: var(--wrong);
+  animation: shake .4s var(--ease);
+}
+.map .region-label {
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--correct);
+  letter-spacing: .05em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .25s var(--ease);
+}
+.map .region-label.is-shown { opacity: 1; }
+
+.map-score {
+  margin-top: 14px;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .9rem;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+  text-align: right;
+}
+.map-score.is-done {
+  color: var(--correct);
+  font-weight: 700;
+}
+
+/* ---- Hauptstädte-Quiz --------------------------------------- */
 .quiz {
   margin-top: 16px;
 }
