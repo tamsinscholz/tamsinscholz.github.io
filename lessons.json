@@ -90,6 +90,17 @@
       "accentSoft": "#D6E3EA",
       "unlockHash": "0bbc8a934c544ebc0bd7e40e9cb371110e6561e83bd0fbf6ad8bce44d9db8e8b",
       "href": "lessons/bundeslaender/"
+    },
+    {
+      "slug": "varusschlacht",
+      "number": 9,
+      "title": "Der Mann, der drei Legionen verschwinden ließ",
+      "subtitle": "Deutsch · Geschichte",
+      "lockedTeaser": "Im Jahr 9 marschieren drei Legionen in einen Wald — und kommen nie wieder heraus.",
+      "accent": "#8C2B24",
+      "accentSoft": "#E4D6C3",
+      "unlockHash": "09727eff25a0c9eabffa9419fae225c80a12e335f9b198b9f99f73e6d60e8396",
+      "href": "lessons/varusschlacht/"
     }
   ]
 }
