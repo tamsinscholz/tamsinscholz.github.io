@@ -147,6 +147,12 @@ strong { color: var(--accent-deep); }
   stroke-dashoffset: 200;
   animation: draw 1.4s ease forwards;
 }
+.curve__ghost {
+  fill: none;
+  stroke: rgba(30,40,35,.22);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
 .curve[data-curve="exponential"] .curve__path { stroke: #b14b3a; animation-delay: .2s; }
 .curve[data-curve="sigmoid"] .curve__path { stroke: var(--accent-deep); animation-delay: .4s; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -156,6 +162,47 @@ strong { color: var(--accent-deep); }
   font-size: 1.1rem;
   color: var(--accent-deep);
 }
+.curve__term {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 6px 2px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.curve__term:hover { background: rgba(46,125,91,.06); }
+.curve__term::after {
+  content: "+";
+  display: inline-grid; place-items: center;
+  width: 22px; height: 22px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  color: var(--ink-faint);
+  font-weight: 500; font-size: 1rem; line-height: 1;
+  flex: none;
+}
+.curve__term[aria-expanded="true"]::after { content: "−"; color: var(--accent); border-color: var(--accent); }
+/* Hide the name until revealed — the point is to guess the shape first. */
+.curve__label { display: none; }
+.curve__prompt {
+  color: var(--ink-faint);
+  font-weight: 500;
+  font-style: italic;
+}
+.curve.is-open .curve__label { display: inline; }
+.curve.is-open .curve__prompt { display: none; }
+.curve__def {
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease;
+}
+.curve.is-open .curve__def { max-height: 220px; opacity: 1; }
 .curve p { font-size: .92rem; color: var(--ink-soft); margin: 0 0 4px; }
 .curve__example { font-style: italic; color: var(--ink-faint); }
 

@@ -20,11 +20,13 @@
     <section class="block block--intro">
       <h2>Intro</h2>
       <p>TikTok followers, a viral band, your height between 11 and 13 — they all look like they could keep climbing. But every fast-growing thing in the real world eventually slows down. That slowdown is the <strong>S-curve</strong>. The name comes from the Greek letter σ ("sigma"), which looks like an S.</p>
+      <p>Before we get there, two simpler shapes. When something grows <strong>linearly</strong>, you <em>add</em> the same amount every step: 2, 4, 6, 8, 10. Save $5 a week and your money grows linearly. On a graph that's a straight line — it can be steep or shallow, but it never bends.</p>
+      <p>When something grows <strong>exponentially</strong>, you <em>multiply</em> every step: 2, 4, 8, 16, 32. Double a penny every day for a month and you end up with over $10 million. On a graph that's a line that starts almost flat, then curls upward and takes off like a rocket. The catch: nothing multiplies forever. Sooner or later it runs out of people to infect, customers to sell to, or room to grow — and that's exactly when an exponential turns into an S-curve.</p>
     </section>
 
     <section class="block block--curves">
       <h2>Three shapes to know</h2>
-      <p class="block__lede">Hover (or tap) each curve to see what kind of growth it represents.</p>
+      <p class="block__lede">Look at each curve and guess what kind of growth it shows, then tap to reveal.</p>
 
       <div class="curves" id="curves">
         <figure class="curve" data-curve="linear">
@@ -32,9 +34,11 @@
             <path class="curve__path" d="M 0 100 L 100 0"/>
           </svg>
           <figcaption>
-            <h3>Linear</h3>
-            <p>You add the same amount each year. Steady. Predictable. Doesn't bend.</p>
-            <p class="curve__example"><em>Example:</em> the number of birthdays you've had.</p>
+            <h3><button class="curve__term" type="button" aria-expanded="false"><span class="curve__prompt">Which one is this?</span><span class="curve__label">Linear</span></button></h3>
+            <div class="curve__def">
+              <p>You add the same amount each year. Steady. Predictable. Doesn't bend.</p>
+              <p class="curve__example"><em>Example:</em> the number of birthdays you've had.</p>
+            </div>
           </figcaption>
         </figure>
 
@@ -43,20 +47,24 @@
             <path class="curve__path" d="M 0 100 Q 60 100 80 60 T 100 0"/>
           </svg>
           <figcaption>
-            <h3>Exponential</h3>
-            <p>You multiply each year. Slow start, then a rocket. Looks unstoppable.</p>
-            <p class="curve__example"><em>Example:</em> a viral video in its first 24 hours.</p>
+            <h3><button class="curve__term" type="button" aria-expanded="false"><span class="curve__prompt">Which one is this?</span><span class="curve__label">Exponential</span></button></h3>
+            <div class="curve__def">
+              <p>You multiply each year. Slow start, then a rocket. Looks unstoppable.</p>
+              <p class="curve__example"><em>Example:</em> a viral video in its first 24 hours.</p>
+            </div>
           </figcaption>
         </figure>
 
         <figure class="curve" data-curve="sigmoid">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <path class="curve__path" d="M 0 95 C 30 95, 35 5, 100 5"/>
+            <path class="curve__path" d="M 0 100 C 32 100, 35 5, 100 5"/>
           </svg>
           <figcaption>
-            <h3>Sigmoid (S-curve)</h3>
-            <p>Slow start. Fast middle. Slow finish. Hits a ceiling and flattens out.</p>
-            <p class="curve__example"><em>Example:</em> your height from age 0 to 30.</p>
+            <h3><button class="curve__term" type="button" aria-expanded="false"><span class="curve__prompt">Which one is this?</span><span class="curve__label">Sigmoid (S-curve)</span></button></h3>
+            <div class="curve__def">
+              <p>Slow start. Fast middle. Slow finish. Hits a ceiling and flattens out.</p>
+              <p class="curve__example"><em>Example:</em> your height from age 0 to 30.</p>
+            </div>
           </figcaption>
         </figure>
       </div>
