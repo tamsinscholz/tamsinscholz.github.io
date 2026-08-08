@@ -145,6 +145,7 @@
   const spontanAdd = document.getElementById("spontan-add");
   const spontanChips = document.getElementById("spontan-chips");
   const spontanCount = document.getElementById("spontan-count");
+  const spontanNote = document.getElementById("spontan-note");
   const compareBlock = document.getElementById("compare");
   const compareHits = document.getElementById("compare-hits");
   const compareHitList = document.getElementById("compare-hit-list");
@@ -217,9 +218,38 @@
     }
   };
 
+  // Schlüssel für „schon vorhanden?". Auflösbare Einträge zählen über das
+  // Bundesland, damit „NRW" und „Nordrhein-Westfalen" als dasselbe gelten;
+  // alles andere über die normalisierte Schreibweise.
+  const entryKey = (raw) => resolveEntry(raw) || norm(raw);
+
+  let noteTimer = 0;
+  const showNote = (msg) => {
+    spontanNote.textContent = msg;
+    spontanNote.hidden = false;
+    clearTimeout(noteTimer);
+    noteTimer = setTimeout(() => { spontanNote.hidden = true; }, 4000);
+  };
+
   const addSpontan = () => {
     const raw = spontanInput.value.trim();
     if (!raw) return;
+
+    const key = entryKey(raw);
+    const dupe = spontan.findIndex(e => entryKey(e) === key);
+    if (dupe !== -1) {
+      showNote(`„${spontan[dupe]}" steht schon auf deiner Liste.`);
+      const chip = spontanChips.children[dupe];
+      if (chip) {
+        chip.classList.remove("is-dupe");
+        void chip.offsetWidth; // Reflow, damit die Animation neu startet
+        chip.classList.add("is-dupe");
+      }
+      spontanInput.value = "";
+      return;
+    }
+
+    spontanNote.hidden = true;
     spontan.push(raw);
     spontanInput.value = "";
     saveSpontan();

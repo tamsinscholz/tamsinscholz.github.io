@@ -208,6 +208,19 @@ strong { color: var(--ink); }
 }
 .spontan__chip-x:hover { color: var(--wrong); }
 
+/* Hinweis, wenn ein Bundesland schon auf der Liste steht. */
+.spontan__note {
+  margin: 8px 0 0;
+  font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
+  font-size: .85rem;
+  color: var(--wrong);
+}
+.spontan__chip.is-dupe {
+  animation: shake .4s var(--ease);
+  border-color: var(--wrong);
+  background: rgba(255,255,255,.9);
+}
+
 .spontan__count {
   margin: 8px 0 0;
   font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
