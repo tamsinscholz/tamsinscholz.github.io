@@ -382,11 +382,10 @@ strong { color: var(--ink); }
 .quiz {
   margin-top: 16px;
 }
-/* Der Pool klebt beim Scrollen oben am Viewport — aber nur so lange, wie
-   darunter noch Karten stehen. Ein sticky-Element wird am unteren Rand seines
-   Elternelements wieder mitgeschoben, deshalb umschließt .quiz__board genau
-   Pool + Kartenliste: Sobald die letzte Karte durch ist, scrollt der Pool
-   oben mit hinaus. Punktestand und Reset-Button bleiben bewusst außerhalb. */
+/* Der Pool klebt beim Scrollen oben am Viewport. Wann er wieder loslässt,
+   rechnet das JS aus (siehe updateStick) — es zieht dafür den top-Wert ins
+   Negative. Der umgebende .quiz-Block ist die sticky-Grenze und endet erst
+   hinter dem Reset-Button, damit die native Grenze nie vorher greift. */
 .quiz__pool {
   display: flex;
   flex-wrap: wrap;

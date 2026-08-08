@@ -384,6 +384,36 @@
   renderPool();
   renderScore();
 
+  // -- Pool oben halten ----------------------------------------------------
+  // position: sticky erledigt Phase 1 und 2 von allein. Loslassen würde es
+  // aber erst, wenn die Unterkante der letzten Karte oben am Viewport
+  // ankommt — bei drei Reihen Chips ist da längst der nächste Abschnitt zu
+  // sehen. Also ziehen wir den top-Wert ins Negative, sobald das Ende des
+  // Quiz unten ins Bild kommt: Der Pool bleibt dann an seiner Stelle im
+  // Dokument stehen und scrollt ganz normal nach oben aus dem Bild. Er bleibt
+  // dabei im Textfluss, es springt also nichts.
+  // Gemessen wird bis zum Ende von .quiz — also inklusive Punktestand und
+  // „nochmal von vorn". So muss man nicht auf die Karte genau scrollen.
+  const quizBox = pool.closest(".quiz");
+  if (quizBox) {
+    let ticking = false;
+    const updateStick = () => {
+      ticking = false;
+      // > 0, sobald das Quiz-Ende über dem unteren Viewport-Rand liegt — und
+      // genau so viele Pixel wollen wir den Pool nach oben schieben.
+      const past = window.innerHeight - quizBox.getBoundingClientRect().bottom;
+      pool.style.top = past > 0 ? `${-past}px` : "";
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateStick);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    updateStick();
+  }
+
   // -- Karten-Quiz ---------------------------------------------------------
   const MAP_KEY = "summerSchool2026.lesson.bundeslaender.map";
   const mapPool = document.getElementById("map-pool");
