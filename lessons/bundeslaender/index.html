@@ -113,28 +113,32 @@
       <p class="block__lede">Drei sind besonders leicht. <em>Kannst du raten, warum?</em></p>
 
       <div class="quiz">
-        <div class="quiz__pool" id="pool" aria-label="Hauptstädte zum Zuordnen">
-          <!-- Capitals get injected here in shuffled order. -->
-        </div>
+        <!-- Pool + Kartenliste bilden zusammen den Bereich, in dem der Pool
+             oben kleben darf. -->
+        <div class="quiz__board">
+          <div class="quiz__pool" id="pool" aria-label="Hauptstädte zum Zuordnen">
+            <!-- Capitals get injected here in shuffled order. -->
+          </div>
 
-        <ol class="quiz__states" id="states">
-          <li class="state" data-state="Baden-Württemberg" data-capital="Stuttgart" data-fact="Heimat von Mercedes, Porsche und dem Schwarzwald. Hier wird Schwäbisch gesprochen — der Dialekt mit dem Ruf, jeden Cent zweimal umzudrehen."></li>
-          <li class="state" data-state="Bayern" data-capital="München" data-fact="Größtes Bundesland nach Fläche. Eigene Verfassung schon vor dem Grundgesetz. Lederhosen, Oktoberfest, BMW — aber auch Hightech und tiefe Berge."></li>
-          <li class="state" data-state="Berlin" data-capital="Berlin" data-fact="Stadtstaat. Hauptstadt von Deutschland UND eigenes Bundesland. Eine Insel mitten in Brandenburg."></li>
-          <li class="state" data-state="Brandenburg" data-capital="Potsdam" data-fact="Umschließt Berlin komplett wie ein Donut. Viel Kiefernwald, viele Seen — und Schloss Sanssouci."></li>
-          <li class="state" data-state="Bremen" data-capital="Bremen" data-fact="Kleinster Stadtstaat — besteht aus zwei Städten: Bremen und Bremerhaven, getrennt durch ein Stück Niedersachsen. Sehr nördlich, sehr maritim."></li>
-          <li class="state" data-state="Hamburg" data-capital="Hamburg" data-fact="Stadtstaat. Größter Hafen Deutschlands, „Tor zur Welt". Eigener Akzent, eigene Brücken (mehr als Venedig, sagen sie gern)."></li>
-          <li class="state" data-state="Hessen" data-capital="Wiesbaden" data-fact="Frankfurt ist die größere Stadt mit Bankentürmen und Flughafen — aber Wiesbaden ist die Hauptstadt. Verwirrend, oder?"></li>
-          <li class="state" data-state="Mecklenburg-Vorpommern" data-capital="Schwerin" data-fact="Ostsee-Strände, Backstein-Kirchen, hundertausend Seen. Angela Merkel ist hier aufgewachsen."></li>
-          <li class="state" data-state="Niedersachsen" data-capital="Hannover" data-fact="Zweitgrößtes Flächenland. Wolfsburg = VW-Stadt. Plattdeutsch wird hier noch gesprochen."></li>
-          <li class="state" data-state="Nordrhein-Westfalen" data-capital="Düsseldorf" data-fact="Bevölkerungsreichstes Bundesland — fast jeder vierte Deutsche wohnt hier. Ruhrgebiet, Köln, Karneval."></li>
-          <li class="state" data-state="Rheinland-Pfalz" data-capital="Mainz" data-fact="Wein-Land Nummer 1. Mosel, Rhein, Riesling. Helmut Kohl kommt von hier."></li>
-          <li class="state" data-state="Saarland" data-capital="Saarbrücken" data-fact="Kleinstes Flächenland. Liegt an der französischen Grenze — viele sprechen ein bisschen Französisch und kochen mit Butter."></li>
-          <li class="state" data-state="Sachsen" data-capital="Dresden" data-fact="Dresden, Leipzig, Meißner Porzellan. Sächsisch ist berühmt — und wird von Komikern gern imitiert."></li>
-          <li class="state" data-state="Sachsen-Anhalt" data-capital="Magdeburg" data-fact="Bauhaus in Dessau, Lutherstadt Wittenberg. Hier hat Martin Luther 1517 seine Thesen an die Kirchentür gehämmert."></li>
-          <li class="state" data-state="Schleswig-Holstein" data-capital="Kiel" data-fact="Zwischen Nord- und Ostsee, also fast eine Insel. Dänische Minderheit im Norden — Schilder oft zweisprachig."></li>
-          <li class="state" data-state="Thüringen" data-capital="Erfurt" data-fact="„Grünes Herz Deutschlands". Goethe und Schiller lebten in Weimar. Und die Thüringer Bratwurst ist gesetzlich geschützt — wirklich!"></li>
-        </ol>
+          <ol class="quiz__states" id="states">
+            <li class="state" data-state="Baden-Württemberg" data-capital="Stuttgart" data-fact="Heimat von Mercedes, Porsche und dem Schwarzwald. Hier wird Schwäbisch gesprochen — der Dialekt mit dem Ruf, jeden Cent zweimal umzudrehen."></li>
+            <li class="state" data-state="Bayern" data-capital="München" data-fact="Größtes Bundesland nach Fläche. Eigene Verfassung schon vor dem Grundgesetz. Lederhosen, Oktoberfest, BMW — aber auch Hightech und tiefe Berge."></li>
+            <li class="state" data-state="Berlin" data-capital="Berlin" data-fact="Stadtstaat. Hauptstadt von Deutschland UND eigenes Bundesland. Eine Insel mitten in Brandenburg."></li>
+            <li class="state" data-state="Brandenburg" data-capital="Potsdam" data-fact="Umschließt Berlin komplett wie ein Donut. Viel Kiefernwald, viele Seen — und Schloss Sanssouci."></li>
+            <li class="state" data-state="Bremen" data-capital="Bremen" data-fact="Kleinster Stadtstaat — besteht aus zwei Städten: Bremen und Bremerhaven, getrennt durch ein Stück Niedersachsen. Sehr nördlich, sehr maritim."></li>
+            <li class="state" data-state="Hamburg" data-capital="Hamburg" data-fact="Stadtstaat. Größter Hafen Deutschlands, „Tor zur Welt". Eigener Akzent, eigene Brücken (mehr als Venedig, sagen sie gern)."></li>
+            <li class="state" data-state="Hessen" data-capital="Wiesbaden" data-fact="Frankfurt ist die größere Stadt mit Bankentürmen und Flughafen — aber Wiesbaden ist die Hauptstadt. Verwirrend, oder?"></li>
+            <li class="state" data-state="Mecklenburg-Vorpommern" data-capital="Schwerin" data-fact="Ostsee-Strände, Backstein-Kirchen, hundertausend Seen. Angela Merkel ist hier aufgewachsen."></li>
+            <li class="state" data-state="Niedersachsen" data-capital="Hannover" data-fact="Zweitgrößtes Flächenland. Wolfsburg = VW-Stadt. Plattdeutsch wird hier noch gesprochen."></li>
+            <li class="state" data-state="Nordrhein-Westfalen" data-capital="Düsseldorf" data-fact="Bevölkerungsreichstes Bundesland — fast jeder vierte Deutsche wohnt hier. Ruhrgebiet, Köln, Karneval."></li>
+            <li class="state" data-state="Rheinland-Pfalz" data-capital="Mainz" data-fact="Wein-Land Nummer 1. Mosel, Rhein, Riesling. Helmut Kohl kommt von hier."></li>
+            <li class="state" data-state="Saarland" data-capital="Saarbrücken" data-fact="Kleinstes Flächenland. Liegt an der französischen Grenze — viele sprechen ein bisschen Französisch und kochen mit Butter."></li>
+            <li class="state" data-state="Sachsen" data-capital="Dresden" data-fact="Dresden, Leipzig, Meißner Porzellan. Sächsisch ist berühmt — und wird von Komikern gern imitiert."></li>
+            <li class="state" data-state="Sachsen-Anhalt" data-capital="Magdeburg" data-fact="Bauhaus in Dessau, Lutherstadt Wittenberg. Hier hat Martin Luther 1517 seine Thesen an die Kirchentür gehämmert."></li>
+            <li class="state" data-state="Schleswig-Holstein" data-capital="Kiel" data-fact="Zwischen Nord- und Ostsee, also fast eine Insel. Dänische Minderheit im Norden — Schilder oft zweisprachig."></li>
+            <li class="state" data-state="Thüringen" data-capital="Erfurt" data-fact="„Grünes Herz Deutschlands". Goethe und Schiller lebten in Weimar. Und die Thüringer Bratwurst ist gesetzlich geschützt — wirklich!"></li>
+          </ol>
+        </div>
 
         <p class="quiz__score" id="score">0 von 16 richtig</p>
         <button class="quiz__reset" type="button" id="reset" hidden>nochmal von vorn</button>

@@ -382,16 +382,27 @@ strong { color: var(--ink); }
 .quiz {
   margin-top: 16px;
 }
+/* Der Pool klebt beim Scrollen oben am Viewport — aber nur so lange, wie
+   darunter noch Karten stehen. Ein sticky-Element wird am unteren Rand seines
+   Elternelements wieder mitgeschoben, deshalb umschließt .quiz__board genau
+   Pool + Kartenliste: Sobald die letzte Karte durch ist, scrollt der Pool
+   oben mit hinaus. Punktestand und Reset-Button bleiben bewusst außerhalb. */
 .quiz__pool {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   padding: 14px;
-  background: rgba(255,255,255,.55);
+  /* Deckend, damit beim Kleben keine Karten durchscheinen. Entspricht dem
+     alten rgba(255,255,255,.55) über dem Papierton. */
+  background: #faf6eb;
   border: 1px dashed var(--rule);
   border-radius: 4px;
   min-height: 56px;
   margin-bottom: 22px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 0 6px 14px rgba(31,46,58,.07);
 }
 .quiz__pool:empty::before {
   content: "alle Hauptstädte zugeordnet · ";
@@ -458,12 +469,11 @@ strong { color: var(--ink); }
   color: var(--ink-faint);
   font-weight: 600;
 }
-.state::after {
-  content: attr(data-state);
+.state__line { display: block; }
+.state .state__name {
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--ink);
-  display: block;
 }
 .state .state__hint {
   font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
@@ -473,13 +483,13 @@ strong { color: var(--ink); }
   margin-top: 2px;
   display: block;
 }
+/* Sitzt in derselben Zeile wie der Landesname — spart eine Zeile pro Karte. */
 .state .state__cap {
   display: none;
   font-family: ui-sans-serif, "Helvetica Neue", Arial, sans-serif;
   font-size: .9rem;
   font-weight: 600;
   color: var(--correct);
-  margin-top: 4px;
   letter-spacing: .02em;
 }
 .state .state__fact {
@@ -499,12 +509,12 @@ strong { color: var(--ink); }
   cursor: default;
 }
 .state.is-correct .state__hint { display: none; }
-.state.is-correct .state__cap { display: block; }
+.state.is-correct .state__cap { display: inline; }
 .state.is-correct .state__fact { display: block; }
 .state.is-correct::before { color: var(--correct); }
 .state.is-correct .state__cap::before {
-  content: "✓ Hauptstadt: ";
-  color: var(--correct);
+  content: ", Hauptstadt: ";
+  color: var(--ink-soft);
   font-weight: 400;
 }
 
@@ -519,6 +529,16 @@ strong { color: var(--ink); }
   40% { transform: translateX(6px); }
   60% { transform: translateX(-4px); }
   80% { transform: translateX(4px); }
+}
+
+/* Konfetti-Canvas — liegt über allem, fängt aber keine Klicks ab. */
+.confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
 }
 
 .quiz__score {

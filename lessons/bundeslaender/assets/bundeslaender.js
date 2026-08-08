@@ -29,6 +29,94 @@
     "rp": "Rheinland-Pfalz",
   };
 
+  // -- Konfetti ------------------------------------------------------------
+  // Zwei Salven aus den unteren Ecken, wie Partyknaller. Läuft auf einem
+  // Canvas über der Seite und räumt sich selbst wieder ab.
+  const CONFETTI_COLORS = ["#2c5f7f", "#5c8c4a", "#b35454", "#e0b643", "#ead9b5", "#1a4258"];
+
+  const celebrate = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (document.querySelector(".confetti")) return;
+
+    const canvas = document.createElement("canvas");
+    canvas.className = "confetti";
+    canvas.setAttribute("aria-hidden", "true");
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext("2d");
+
+    let w, h;
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const rand = (lo, hi) => lo + Math.random() * (hi - lo);
+    const parts = [];
+    // Je eine Salve links und rechts, schräg nach oben in die Bildmitte.
+    for (const side of [-1, 1]) {
+      const originX = side < 0 ? 0 : w;
+      for (let i = 0; i < 70; i++) {
+        const angle = rand(Math.PI * 0.24, Math.PI * 0.46); // über der Waagerechten
+        const speed = rand(12, 19);
+        parts.push({
+          x: originX,
+          y: h,
+          vx: Math.cos(angle) * speed * -side,
+          vy: -Math.sin(angle) * speed,
+          size: rand(9, 18),
+          color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+          rot: rand(0, Math.PI * 2),
+          spin: rand(-0.11, 0.11),
+          wobble: rand(0, Math.PI * 2),
+        });
+      }
+    }
+
+    // Halbe Geschwindigkeit + ein Viertel Schwerkraft = gleiche Flugbahn in
+    // doppelter Zeit. Die Reibung ist die Wurzel des alten Werts, damit sie
+    // über die doppelte Zahl an Frames gleich stark bremst.
+    const GRAVITY = 0.08, DRAG = 0.996;
+    let frames = 0;
+    let raf = 0;
+
+    const tick = () => {
+      ctx.clearRect(0, 0, w, h);
+      let alive = 0;
+      for (const p of parts) {
+        p.vx *= DRAG;
+        p.vy = p.vy * DRAG + GRAVITY;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.spin;
+        p.wobble += 0.05;
+        if (p.y - p.size > h) continue; // unten raus: nicht mehr zeichnen
+        alive++;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        // Breite pulsiert, damit die Schnipsel sich zu drehen scheinen.
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size * Math.abs(Math.cos(p.wobble)), p.size * 0.6);
+        ctx.restore();
+      }
+      frames++;
+      if (alive > 0 && frames < 1200) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        cancelAnimationFrame(raf);
+        window.removeEventListener("resize", resize);
+        canvas.remove();
+      }
+    };
+    raf = requestAnimationFrame(tick);
+  };
+
   // -- Quiz ----------------------------------------------------------------
   const KEY = "summerSchool2026.lesson.bundeslaender.matched";
   const pool = document.getElementById("pool");
@@ -149,15 +237,26 @@
 
   // Reichere jede State-Zeile mit Hint + (verstecktem) Hauptstadt/Fakt-Block an.
   for (const state of states) {
-    const hint = document.createElement("span");
-    hint.className = "state__hint";
-    hint.textContent = "Hauptstadt zuordnen";
-    state.appendChild(hint);
+    // Erste Zeile: Bundesland und — sobald richtig — die Hauptstadt daneben.
+    const line = document.createElement("span");
+    line.className = "state__line";
+
+    const name = document.createElement("span");
+    name.className = "state__name";
+    name.textContent = state.dataset.state;
+    line.appendChild(name);
 
     const cap = document.createElement("span");
     cap.className = "state__cap";
     cap.textContent = state.dataset.capital;
-    state.appendChild(cap);
+    line.appendChild(cap);
+
+    state.appendChild(line);
+
+    const hint = document.createElement("span");
+    hint.className = "state__hint";
+    hint.textContent = "Hauptstadt zuordnen";
+    state.appendChild(hint);
 
     const fact = document.createElement("span");
     fact.className = "state__fact";
@@ -257,6 +356,8 @@
         clearSelection();
         renderPool();
         renderScore();
+        // Nur hier feiern, nicht beim Wiederherstellen aus dem localStorage.
+        if (matched.size === states.length) celebrate();
       } else {
         state.classList.add("is-wrong");
         setTimeout(() => state.classList.remove("is-wrong"), 450);
@@ -393,6 +494,8 @@
         clearMapSelection();
         renderMapPool();
         renderMapScore();
+        // Nur hier feiern, nicht beim Wiederherstellen aus dem localStorage.
+        if (mapMatched.size === regions.length) celebrate();
       } else {
         region.classList.add("is-wrong");
         setTimeout(() => region.classList.remove("is-wrong"), 450);
