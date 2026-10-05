@@ -27,6 +27,7 @@
       font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       place-items: center;
       padding: 6vh 16px;
       overflow-x: hidden;
@@ -34,7 +35,7 @@
     main {
       position: relative;
       width: 100%;
-      max-width: 640px;
+      max-width: 760px;
       text-align: center;
     }
     /* Giant ghost monogram behind the name */
@@ -64,10 +65,15 @@
       color: var(--ink-soft);
       font-size: 1.1rem;
     }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      max-width: 740px;
+      margin: 9vh auto 0;
+    }
     .card {
       display: block;
-      margin: 9vh auto 0;
-      max-width: 360px;
       padding: 1.6rem 1.6rem 1.4rem;
       background: #fff;
       border: 1px solid var(--rule);
@@ -84,7 +90,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,.05), 0 18px 40px rgba(91,78,178,.18);
       outline: none;
     }
-    .card__year {
+    .card__figure {
       display: block;
       font-size: clamp(3.6rem, 14vw, 5.5rem);
       line-height: .9;
@@ -110,10 +116,16 @@
     <div class="mono" aria-hidden="true">TS</div>
     <h1>Tamsin Scholz</h1>
     <p class="tag">a small corner of the internet</p>
-    <a class="card" href="summer-school-2026/">
-      <span class="card__year">2026</span>
-      <span class="card__label"><span>Summer School 2026</span><span aria-hidden="true">&rarr;</span></span>
-    </a>
+    <nav class="cards" aria-label="Projects">
+      <a class="card" href="summer-school-2026/">
+        <span class="card__figure">2026</span>
+        <span class="card__label"><span>Summer School 2026</span><span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="card" href="geospiel/">
+        <span class="card__figure">16</span>
+        <span class="card__label"><span>Geospiel</span><span aria-hidden="true">&rarr;</span></span>
+      </a>
+    </nav>
   </main>
 </body>
 </html>
