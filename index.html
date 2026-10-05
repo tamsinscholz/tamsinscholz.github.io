@@ -106,19 +106,10 @@
     }
     .card:hover .art, .card:focus-visible .art { opacity: .38; transform: translate(-6px, -6px); }
     .art--de path { fill: var(--accent); }
-    /* Faded with a translucent colour rather than the shared opacity:
-       Safari clips the italic ß's overhang when it's drawn with opacity */
-    .art--glyph {
-      right: 2%;
-      bottom: -30%;
-      height: auto;
-      font-size: 17rem;
-      line-height: 1;
-      font-style: italic;
-      color: rgb(91 78 178 / .2);
-      opacity: 1;
-    }
-    .card:hover .art--glyph, .card:focus-visible .art--glyph { opacity: 1; color: rgb(91 78 178 / .38); }
+    /* ß outline from Source Serif 4 Italic (SIL Open Font License), drawn as
+       a path: Safari clips the overhang of real italic text while it animates */
+    .art--glyph { right: 3%; bottom: -31%; height: 116%; }
+    .art--glyph path { fill: var(--accent); }
     .card__meta {
       font-family: var(--sans);
       font-size: .72rem;
@@ -178,7 +169,7 @@
         <span class="card__go"><span class="card__meta">Open</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card" href="summer-school-2026/">
-        <span class="art art--glyph" aria-hidden="true">&szlig;</span>
+        <svg class="art art--glyph" viewBox="0 0 666 1013" aria-hidden="true"><path d="M85 1013Q65 1013 47 1008Q29 1003 17 992.5Q5 982 0 965Q3 949 17.5 940.5Q32 932 48 932Q63 932 74 936.5Q85 941 95.5 949Q106 957 117 969L137 989V993H125V989Q142 979 156 963Q170 947 181 928Q198 898 209 862Q220 826 227 791Q234 756 238 729Q258 616 276 502.5Q294 389 313 271Q324 202 344 151Q364 100 393 66.5Q422 33 458.5 16.5Q495 0 538 0Q598 0 632 30Q666 60 666 108Q666 146 649 172Q632 198 606.5 217Q581 236 556 254Q528 274 506.5 299Q485 324 485 362Q485 394 506 423Q527 452 554 481Q573 502 591 525Q609 548 620.5 572.5Q632 597 632 626Q632 665 612.5 697Q593 729 558.5 747.5Q524 766 479 766Q433 766 400 742Q367 718 362 680Q364 666 374 657.5Q384 649 397 649Q416 649 426 660Q436 671 441 686L465 752L418 734Q433 738 443 740Q453 742 470 742Q517 742 546 714Q575 686 575 649Q575 613 554.5 582.5Q534 552 508 522Q480 490 455.5 458Q431 426 431 386Q431 347 447.5 320Q464 293 488.5 273Q513 253 537 234Q556 220 572 203.5Q588 187 598 164.5Q608 142 608 111Q608 69 587.5 46.5Q567 24 532 24Q500 24 475 40.5Q450 57 430.5 88.5Q411 120 397.5 165.5Q384 211 374 269Q356 377 337.5 498.5Q319 620 299 729Q292 767 280 807Q268 847 250 883.5Q232 920 208 949Q192 968 172.5 982.5Q153 997 131.5 1005Q110 1013 85 1013Z"/></svg>
         <span class="card__meta">Lessons</span>
         <span class="card__title">Summer School <em>2026</em></span>
         <span class="card__blurb">Seven lessons, unlocked one at a time.</span>
