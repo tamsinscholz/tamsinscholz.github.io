@@ -106,6 +106,8 @@
     }
     .card:hover .art, .card:focus-visible .art { opacity: .38; transform: translate(-6px, -6px); }
     .art--de path { fill: var(--accent); }
+    /* Faded with a translucent colour rather than the shared opacity:
+       Safari clips the italic ß's overhang when it's drawn with opacity */
     .art--glyph {
       right: 2%;
       bottom: -30%;
@@ -113,8 +115,10 @@
       font-size: 17rem;
       line-height: 1;
       font-style: italic;
-      color: var(--accent);
+      color: rgb(91 78 178 / .2);
+      opacity: 1;
     }
+    .card:hover .art--glyph, .card:focus-visible .art--glyph { opacity: 1; color: rgb(91 78 178 / .38); }
     .card__meta {
       font-family: var(--sans);
       font-size: .72rem;
