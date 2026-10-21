@@ -110,6 +110,10 @@
        a path: Safari clips the overhang of real italic text while it animates */
     .art--glyph { right: 3%; bottom: -31%; height: 116%; }
     .art--glyph path { fill: var(--accent); }
+    /* Unwordle board: the first letter misses five times, then the word lands */
+    .art--tiles { right: -12%; bottom: 8%; height: 80%; }
+    .art--tiles rect { fill: var(--accent); }
+    .art--tiles .miss { fill: none; stroke: var(--accent); stroke-width: 3; }
     .card__meta {
       font-family: var(--sans);
       font-size: .72rem;
@@ -173,6 +177,13 @@
         <span class="card__meta">Lessons</span>
         <span class="card__title">Summer School <em>2026</em></span>
         <span class="card__blurb">Seven lessons, unlocked one at a time.</span>
+        <span class="card__go"><span class="card__meta">Open</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card" href="unwordle/">
+        <svg class="art art--tiles" viewBox="0 0 116 140" aria-hidden="true"><rect class="miss" x="1.5" y="1.5" width="17" height="17" rx="2"/><rect x="24" y="0" width="20" height="20" rx="2.5"/><rect x="48" y="0" width="20" height="20" rx="2.5"/><rect x="72" y="0" width="20" height="20" rx="2.5"/><rect x="96" y="0" width="20" height="20" rx="2.5"/><rect class="miss" x="1.5" y="25.5" width="17" height="17" rx="2"/><rect x="24" y="24" width="20" height="20" rx="2.5"/><rect x="48" y="24" width="20" height="20" rx="2.5"/><rect x="72" y="24" width="20" height="20" rx="2.5"/><rect x="96" y="24" width="20" height="20" rx="2.5"/><rect class="miss" x="1.5" y="49.5" width="17" height="17" rx="2"/><rect x="24" y="48" width="20" height="20" rx="2.5"/><rect x="48" y="48" width="20" height="20" rx="2.5"/><rect x="72" y="48" width="20" height="20" rx="2.5"/><rect x="96" y="48" width="20" height="20" rx="2.5"/><rect class="miss" x="1.5" y="73.5" width="17" height="17" rx="2"/><rect x="24" y="72" width="20" height="20" rx="2.5"/><rect x="48" y="72" width="20" height="20" rx="2.5"/><rect x="72" y="72" width="20" height="20" rx="2.5"/><rect x="96" y="72" width="20" height="20" rx="2.5"/><rect class="miss" x="1.5" y="97.5" width="17" height="17" rx="2"/><rect x="24" y="96" width="20" height="20" rx="2.5"/><rect x="48" y="96" width="20" height="20" rx="2.5"/><rect x="72" y="96" width="20" height="20" rx="2.5"/><rect x="96" y="96" width="20" height="20" rx="2.5"/><rect x="0" y="120" width="20" height="20" rx="2.5"/><rect x="24" y="120" width="20" height="20" rx="2.5"/><rect x="48" y="120" width="20" height="20" rx="2.5"/><rect x="72" y="120" width="20" height="20" rx="2.5"/><rect x="96" y="120" width="20" height="20" rx="2.5"/></svg>
+        <span class="card__meta">Game</span>
+        <span class="card__title">Un<em>wordle</em></span>
+        <span class="card__blurb">Five letters, ten guesses, and a puzzle that keeps dodging.</span>
         <span class="card__go"><span class="card__meta">Open</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
       </a>
     </nav>
