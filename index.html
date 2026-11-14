@@ -114,6 +114,11 @@
     .art--tiles { right: -12%; bottom: 8%; height: 80%; }
     .art--tiles rect { fill: var(--accent); }
     .art--tiles .miss { fill: none; stroke: var(--accent); stroke-width: 3; }
+    /* Scatter plot with its line of best fit */
+    .art--plot { right: -5%; bottom: -8%; height: 74%; }
+    .art--plot circle { fill: var(--accent); }
+    .art--plot path { fill: none; stroke: var(--accent); stroke-linecap: round; }
+    .art--plot .fit { stroke-width: 4; }
     .card__meta {
       font-family: var(--sans);
       font-size: .72rem;
@@ -177,6 +182,13 @@
         <span class="card__meta">Game</span>
         <span class="card__title">Un<em>wordle</em></span>
         <span class="card__blurb">Five letters, ten guesses, and a puzzle that keeps dodging.</span>
+        <span class="card__go"><span class="card__meta">Open</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card" href="math-practice/">
+        <svg class="art art--plot" viewBox="0 0 120 120" aria-hidden="true"><path class="fit" d="M8 108L116 18"/><circle cx="14" cy="96" r="5"/><circle cx="24" cy="108" r="5"/><circle cx="34" cy="76" r="5"/><circle cx="44" cy="94" r="5"/><circle cx="54" cy="58" r="5"/><circle cx="64" cy="74" r="5"/><circle cx="74" cy="40" r="5"/><circle cx="84" cy="58" r="5"/><circle cx="94" cy="22" r="5"/><circle cx="106" cy="34" r="5"/></svg>
+        <span class="card__meta">Practice</span>
+        <span class="card__title">Linear <em>Relations</em></span>
+        <span class="card__blurb">Fresh questions on every Unit 4 topic, with worked solutions.</span>
         <span class="card__go"><span class="card__meta">Open</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="card" href="summer-school-2026/">
