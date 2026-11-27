@@ -42,9 +42,11 @@
     .masthead { position: relative; isolation: isolate; }
     .mono {
       position: absolute;
-      inset: 50% auto auto 50%;
-      transform: translate(-50%, -38%);
-      font-size: clamp(14rem, 52vw, 30rem);
+      /* Anchored by its bottom edge to the top of the cards (9vh = cards' top margin),
+         so it sits on them at any window size */
+      inset: auto auto calc(-9vh - .15em) 50%;
+      transform: translateX(-60%);
+      font-size: clamp(14rem, min(68vw, 42vh), 30rem);
       font-style: italic;
       line-height: 1;
       letter-spacing: -.12em;
